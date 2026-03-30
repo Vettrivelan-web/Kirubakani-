@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dedicated to Kirubakanni.M</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital,wght@0,400;1,500&family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff5f7;
+            font-family: 'Poppins', sans-serif;
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Soft Petal Animation */
+        .petal {
+            position: absolute;
+            background: #ffc2d1;
+            border-radius: 150% 0 150% 0;
+            height: 15px;
+            width: 15px;
+            opacity: 0.7;
+            animation: fall 8s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .container {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 182, 193, 0.4);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            border-top: 8px solid #ff85a2;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            color: #ff5c8a;
+            margin-bottom: 5px;
+        }
+
+        .birth-date {
+            font-size: 0.9rem;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .timer-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .main-timer {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ff5c8a;
+            background: #fff0f3;
+            padding: 15px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            border: 1px dashed #ff85a2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 12px;
+            border-bottom: 3px solid #ffccd5;
+        }
+
+        .stat-box span {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-box label {
+            font-size: 0.7rem;
+            color: #999;
+        }
+
+        .kavithai-section {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.05rem;
+            background: #fffaf0;
+            padding: 20px;
+            border-left: 4px solid #ff85a2;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .footer-wish {
+            margin-top: 25px;
+            font-weight: 600;
+            color: #ff5c8a;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // Falling Petals Effect
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 3 + 5 + 's';
+            petal.style.width = Math.random() * 15 + 10 + 'px';
+            petal.style.height = petal.style.width;
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 8000);
+        }
+        setInterval(createPetal, 500);
+    </script>
+
+    <div class="container">
+        <h1>Kirubakanni.M</h1>
+        <div class="birth-date">03 MAY 1991</div>
+
+        <span class="timer-label">காலத்தின் கணக்கில் நீ...</span>
+        <div class="main-timer" id="precise-age">Calculating...</div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span id="total-days">-</span>
+                <label>மொத்த நாட்கள்</label>
+            </div>
+            <div class="stat-box">
+                <span id="total-hours">-</span>
+                <label>மணிநேரங்கள்</label>
+            </div>
+            <div class="stat-box" style="grid-column: span 2;">
+                <span id="total-seconds">-</span>
+                <label>நொடிகள் (Live)</label>
+            </div>
+        </div>
+
+        <div class="kavithai-section">
+            "1991 - மே மாதத்தின் அந்த இளங்காலைப் பொழுதில்,<br>
+            பூமிக்கு வந்த ஒரு அழகான கவிதை நீ!<br><br>
+            சொல்லப்படாத வார்த்தைகளில் ஆயிரம் அர்த்தங்கள் இருக்கலாம்...<br>
+            இந்த ஓடும் நொடிகள் சொல்லும் உனக்கு,<br>
+            என் மௌனத்தின் ஆழத்தை!<br><br>
+            என்றும் புன்னகையுடன் இரு..."
+        </div>
+
+        <div class="footer-wish">
+            இனிய பிறந்தநாள் வாழ்த்துக்கள்! 🌸
+        </div>
+    </div>
+
+    <script>
+        function updateTimeline() {
+            const birthDate = new Date("1991-05-03T00:00:00");
+            const now = new Date();
+            
+            // Age Calculation
+            let years = now.getFullYear() - birthDate.getFullYear();
+            let months = now.getMonth() - birthDate.getMonth();
+            let days = now.getDate() - birthDate.getDate();
+
+            if (months < 0 || (months === 0 && days < 0)) {
+                years--;
+                months += 12;
+            }
+            if (days < 0) {
+                const prevMonthLastDay = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+                days += prevMonthLastDay;
+                months--;
+            }
+
+            document.getElementById('precise-age').innerText = 
+                `${years} வருடம் | ${months} மாதம் | ${days} நாள்`;
+
+            // Total Cumulative Stats
+            const diffMs = now - birthDate;
+            const totalSeconds = Math.floor(diffMs / 1000);
+            const totalHours = Math.floor(totalSeconds / 3600);
+            const totalDays = Math.floor(totalHours / 24);
+
+            document.getElementById('total-days').innerText = totalDays.toLocaleString();
+            document.getElementById('total-hours').innerText = totalHours.toLocaleString();
+            document.getElementById('total-seconds').innerText = totalSeconds.toLocaleString();
+        }
+
+        setInterval(updateTimeline, 1000);
+        updateTimeline();
+    </script>
+</body>
+</html>
