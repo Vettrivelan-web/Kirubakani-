@@ -2,221 +2,203 @@
 <html lang="ta">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dedicated to Kirubakanni.M</title>
+    <title>Hostel Maintenance - Master Checklist</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital,wght@0,400;1,500&family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            background: #fff5f7;
-            font-family: 'Poppins', sans-serif;
-            color: #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 10px; background-color: #f5f5f5; }
+        
+        @media print {
+            @page { size: A4 landscape; margin: 5mm; }
+            body { background: white; padding: 0; }
+            .no-print { display: none; }
+            .container { width: 100%; box-shadow: none; border: none; }
+            table { width: 100%; border-collapse: collapse; }
+            th, td { font-size: 7pt !important; padding: 1px !important; border: 1px solid black !important; }
+            .sign-section { margin-top: 20px !important; }
+            textarea { height: 20px !important; }
         }
 
-        /* Soft Petal Animation */
-        .petal {
-            position: absolute;
-            background: #ffc2d1;
-            border-radius: 150% 0 150% 0;
-            height: 15px;
-            width: 15px;
-            opacity: 0.7;
-            animation: fall 8s linear infinite;
-            z-index: -1;
-        }
+        .container { background: white; padding: 10px; width: 1080px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header-section { text-align: center; margin-bottom: 5px; }
+        h1 { margin: 0; color: #1a2a6c; font-size: 20px; text-transform: uppercase; border-bottom: 2px solid #333; padding-bottom: 5px; }
+        
+        .controls { text-align: center; margin-bottom: 10px; padding: 10px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        select, input[type="month"], button { padding: 6px; font-size: 13px; border-radius: 4px; border: 1px solid #ccc; margin: 3px; }
+        button { background: #27ae60; color: white; border: none; cursor: pointer; font-weight: bold; }
+        .btn-reset { background: #e74c3c; }
 
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(360deg); }
-        }
+        .meta-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: bold; font-size: 12px; }
+        
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        th, td { border: 1px solid #000; text-align: center; font-size: 8.5px; padding: 2px 0; }
+        th { background-color: #f2f2f2; }
 
-        .container {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(255, 182, 193, 0.4);
-            max-width: 450px;
-            width: 90%;
-            text-align: center;
-            border-top: 8px solid #ff85a2;
-        }
+        .col-sno { width: 25px; }
+        .col-name { width: 130px; }
+        .col-area { width: 100px; }
+        .col-day { width: 21px; }
+        .col-remarks { width: 90px; }
 
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.2rem;
-            color: #ff5c8a;
-            margin-bottom: 5px;
-        }
+        .section-divider { background-color: #eee !important; font-weight: bold; font-size: 9px !important; text-align: left; padding-left: 10px !important; border-top: 2px solid #000 !important; }
+        textarea { width: 98%; height: 22px; font-size: 8px; resize: none; border: none; font-family: inherit; }
+        input[type="checkbox"] { transform: scale(0.8); cursor: pointer; }
 
-        .birth-date {
-            font-size: 0.9rem;
-            color: #888;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-        }
-
-        .timer-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: #aaa;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .main-timer {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #ff5c8a;
-            background: #fff0f3;
-            padding: 15px;
-            border-radius: 50px;
-            margin-bottom: 30px;
-            border: 1px dashed #ff85a2;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .stat-box {
-            background: #fafafa;
-            padding: 10px;
-            border-radius: 12px;
-            border-bottom: 3px solid #ffccd5;
-        }
-
-        .stat-box span {
-            display: block;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .stat-box label {
-            font-size: 0.7rem;
-            color: #999;
-        }
-
-        .kavithai-section {
-            font-family: 'Lora', serif;
-            font-style: italic;
-            line-height: 1.8;
-            color: #555;
-            font-size: 1.05rem;
-            background: #fffaf0;
-            padding: 20px;
-            border-left: 4px solid #ff85a2;
-            text-align: left;
-            margin-top: 20px;
-        }
-
-        .footer-wish {
-            margin-top: 25px;
-            font-weight: 600;
-            color: #ff5c8a;
-            font-size: 1.1rem;
-        }
+        .sign-section { display: flex; justify-content: space-between; margin-top: 30px; padding: 0 50px; }
+        .sign-box { text-align: center; width: 200px; border-top: 1px solid black; padding-top: 5px; font-weight: bold; font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <script>
-        // Falling Petals Effect
-        function createPetal() {
-            const petal = document.createElement('div');
-            petal.classList.add('petal');
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.animationDuration = Math.random() * 3 + 5 + 's';
-            petal.style.width = Math.random() * 15 + 10 + 'px';
-            petal.style.height = petal.style.width;
-            document.body.appendChild(petal);
-            setTimeout(() => petal.remove(), 8000);
-        }
-        setInterval(createPetal, 500);
-    </script>
+<div class="no-print controls">
+    <strong>Select Checklist: </strong>
+    <select id="viewSelect" onchange="initTable()">
+        <option value="boys_common">Boys Hostel-2 (Ground & Common Areas)</option>
+        <option value="boys_floors">Boys Hostel-2 (1-9 Floors Rooms)</option>
+        <option value="combined">Jayameena & Bharathiyar Combined</option>
+    </select>
 
-    <div class="container">
-        <h1>Kirubakanni.M</h1>
-        <div class="birth-date">03 MAY 1991</div>
+    <input type="month" id="monthPicker" onchange="updateDateText()">
+    <button onclick="window.print()">Print / Save PDF</button>
+    <button class="btn-reset" onclick="resetCurrentView()">Clear Data</button>
+</div>
 
-        <span class="timer-label">காலத்தின் கணக்கில் நீ...</span>
-        <div class="main-timer" id="precise-age">Calculating...</div>
-
-        <div class="stats-grid">
-            <div class="stat-box">
-                <span id="total-days">-</span>
-                <label>மொத்த நாட்கள்</label>
-            </div>
-            <div class="stat-box">
-                <span id="total-hours">-</span>
-                <label>மணிநேரங்கள்</label>
-            </div>
-            <div class="stat-box" style="grid-column: span 2;">
-                <span id="total-seconds">-</span>
-                <label>நொடிகள் (Live)</label>
-            </div>
-        </div>
-
-        <div class="kavithai-section">
-            "1991 - மே மாதத்தின் அந்த இளங்காலைப் பொழுதில்,<br>
-            பூமிக்கு வந்த ஒரு அழகான கவிதை நீ!<br><br>
-            சொல்லப்படாத வார்த்தைகளில் ஆயிரம் அர்த்தங்கள் இருக்கலாம்...<br>
-            இந்த ஓடும் நொடிகள் சொல்லும் உனக்கு,<br>
-            என் மௌனத்தின் ஆழத்தை!<br><br>
-            என்றும் புன்னகையுடன் இரு..."
-        </div>
-
-        <div class="footer-wish">
-            இனிய பிறந்தநாள் வாழ்த்துக்கள்! 🌸
-        </div>
+<div class="container">
+    <div class="header-section">
+        <h1 id="mainHeading">Boys Hostel-2 Checklist</h1>
     </div>
 
-    <script>
-        function updateTimeline() {
-            const birthDate = new Date("1991-05-03T00:00:00");
-            const now = new Date();
+    <div class="meta-info">
+        <span id="txtMonth">Month: </span>
+        <span id="txtYear">Year: </span>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="col-sno">S.No</th>
+                <th class="col-name">Section / Floor</th>
+                <th class="col-area">Area / Item</th>
+                <script>
+                    for(let d=1; d<=31; d++) document.write(`<th class="col-day">${d}</th>`);
+                </script>
+                <th class="col-remarks">Remarks</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <div class="sign-section">
+        <div class="sign-box">Housekeeping Supervisor</div>
+        <div class="sign-box">Hostel Manager</div>
+    </div>
+</div>
+
+<script>
+    const tableBody = document.getElementById('tableBody');
+    const monthPicker = document.getElementById('monthPicker');
+    const viewSelect = document.getElementById('viewSelect');
+    const mainHeading = document.getElementById('mainHeading');
+
+    const now = new Date();
+    monthPicker.value = now.toISOString().substring(0, 7);
+
+    function updateDateText() {
+        const date = new Date(monthPicker.value);
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        document.getElementById('txtMonth').innerText = "Month: " + months[date.getMonth()];
+        document.getElementById('txtYear').innerText = "Year: " + date.getFullYear();
+    }
+
+    function initTable() {
+        const view = viewSelect.value;
+        let html = "";
+        let sno = 1;
+
+        if (view === "boys_common") {
+            mainHeading.innerText = "Boys Hostel-2 (Ground Floor & Common Areas)";
             
-            // Age Calculation
-            let years = now.getFullYear() - birthDate.getFullYear();
-            let months = now.getMonth() - birthDate.getMonth();
-            let days = now.getDate() - birthDate.getDate();
+            const groundItems = ["Parents Waiting Area", "Warden Office Room", "Warden Office Restroom", "Hostel Manager Room", "Windows & Chairs", "Reception Table", "Main Doors"];
+            const commonItems = ["Common Restroom", "Gym", "Terrace Area"];
 
-            if (months < 0 || (months === 0 && days < 0)) {
-                years--;
-                months += 12;
+            html += `<tr><td colspan="35" class="section-divider">GROUND FLOOR AREA</td></tr>`;
+            groundItems.forEach(item => {
+                html += `<tr><td>${sno++}</td><td>Ground Floor</td><td style="text-align:left; padding-left:5px;">${item}</td>${generateCells("BH2-Common", item, 1)}</tr>`;
+            });
+
+            html += `<tr><td colspan="35" class="section-divider">COMMON FACILITIES</td></tr>`;
+            commonItems.forEach(item => {
+                html += `<tr><td>${sno++}</td><td>General</td><td style="text-align:left; padding-left:5px;">${item}</td>${generateCells("BH2-Common", item, 1)}</tr>`;
+            });
+
+            html += `<tr><td colspan="35" class="section-divider">EB ROOMS (ALL FLOORS)</td></tr>`;
+            for(let f=1; f<=9; f++) {
+                html += `<tr><td>${sno++}</td><td>Floor ${f}</td><td style="text-align:left; padding-left:5px;">EB Room</td>${generateCells("BH2-EB", "Floor"+f, 1)}</tr>`;
             }
-            if (days < 0) {
-                const prevMonthLastDay = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-                days += prevMonthLastDay;
-                months--;
+
+        } else if (view === "boys_floors") {
+            mainHeading.innerText = "Boys Hostel-2 (Rooms & Restrooms 1-9 Floors)";
+            for (let f = 1; f <= 9; f++) {
+                ["Room", "Restroom"].forEach((task, tIdx) => {
+                    html += `<tr>`;
+                    if(tIdx === 0) { html += `<td rowspan="2">${sno++}</td><td rowspan="2">Floor ${f}</td>`; }
+                    html += `<td style="text-align:left; padding-left:5px;">${task}</td>${generateCells("BoysH2-F"+f, task, tIdx === 0 ? 0 : 1, tIdx === 0)}</tr>`;
+                });
             }
-
-            document.getElementById('precise-age').innerText = 
-                `${years} வருடம் | ${months} மாதம் | ${days} நாள்`;
-
-            // Total Cumulative Stats
-            const diffMs = now - birthDate;
-            const totalSeconds = Math.floor(diffMs / 1000);
-            const totalHours = Math.floor(totalSeconds / 3600);
-            const totalDays = Math.floor(totalHours / 24);
-
-            document.getElementById('total-days').innerText = totalDays.toLocaleString();
-            document.getElementById('total-hours').innerText = totalHours.toLocaleString();
-            document.getElementById('total-seconds').innerText = totalSeconds.toLocaleString();
+        } else {
+            mainHeading.innerText = "Jayameena & Bharathiyar Hostels Checklist";
+            html += `<tr><td colspan="35" class="section-divider">JAYAMEENA HOSTELS</td></tr>`;
+            ["Jayameena 1", "Jayameena 2", "Jayameena 3"].forEach(hostel => {
+                ["Room", "Restroom"].forEach((task, tIdx) => {
+                    html += `<tr>`;
+                    if(tIdx === 0) { html += `<td rowspan="2">${sno++}</td><td rowspan="2">${hostel}</td>`; }
+                    html += `<td style="text-align:left; padding-left:5px;">${task}</td>${generateCells(hostel, task, tIdx === 0 ? 0 : 1, tIdx === 0)}</tr>`;
+                });
+            });
+            html += `<tr><td colspan="35" class="section-divider">BHARATHIYAR LADIES HOSTEL</td></tr>`;
+            for (let f = 1; f <= 4; f++) {
+                ["Room", "Restroom"].forEach((task, tIdx) => {
+                    html += `<tr>`;
+                    if(tIdx === 0) { html += `<td rowspan="2">${sno++}</td><td rowspan="2">Floor ${f}</td>`; }
+                    html += `<td style="text-align:left; padding-left:5px;">${task}</td>${generateCells("Bharathiyar-F"+f, task, tIdx === 0 ? 0 : 1, tIdx === 0)}</tr>`;
+                });
+            }
         }
+        tableBody.innerHTML = html;
+        updateDateText();
+    }
 
-        setInterval(updateTimeline, 1000);
-        updateTimeline();
-    </script>
+    function generateCells(idPrefix, task, type, isFirstOfTwo = false) {
+        let cellHtml = "";
+        for(let d=1; d<=31; d++) {
+            let id = `${idPrefix}-${task}-${d}`;
+            let checked = localStorage.getItem(id) === "true" ? "checked" : "";
+            cellHtml += `<td><input type="checkbox" id="${id}" ${checked} onchange="saveData('${id}', this.checked)"></td>`;
+        }
+        
+        // Remarks logic: 
+        // type 0 means first row of a 2-row task (like Room/Restroom)
+        // type 1 means a single standalone row
+        if(type === 0) {
+            let remId = `${idPrefix}-rem`;
+            let val = localStorage.getItem(remId) || "";
+            cellHtml += `<td rowspan="2"><textarea id="${remId}" oninput="saveData('${remId}', this.value)">${val}</textarea></td>`;
+        } else if (type === 1 && !isFirstOfTwo && !document.getElementById(idPrefix + '-' + task + '-rem-placeholder')) {
+             let remId = `${idPrefix}-${task}-rem`;
+             let val = localStorage.getItem(remId) || "";
+             cellHtml += `<td><textarea id="${remId}" oninput="saveData('${remId}', this.value)">${val}</textarea></td>`;
+        }
+        return cellHtml;
+    }
+
+    function saveData(id, val) { localStorage.setItem(id, val); }
+
+    function resetCurrentView() {
+        if(confirm("இந்த பக்கத்தில் உள்ள தரவுகளை மட்டும் அழிக்க வேண்டுமா?")) {
+            localStorage.clear();
+            initTable();
+        }
+    }
+
+    initTable();
+</script>
 </body>
 </html>
